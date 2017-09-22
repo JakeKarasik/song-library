@@ -116,6 +116,7 @@ public class FXMLDocumentController implements Initializable {
             return;
         }
         
+        //Load data into song details UI
         name_detail.setText(selected_song.name);
         artist_detail.setText(selected_song.artist);
         year_detail.setText(selected_song.year);
@@ -131,8 +132,8 @@ public class FXMLDocumentController implements Initializable {
         public Song(String name, String artist, String year, String album) {
             this.name = name;
             this.artist = artist;
-            this.year = year == null ? "" : year;
-            this.album = album == null ? "" : album;
+            this.year = year;
+            this.album = album;
         }
         
         @Override
