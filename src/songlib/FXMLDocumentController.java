@@ -24,7 +24,7 @@ public class FXMLDocumentController implements Initializable {
     private Pane top_right, bot_left, bot_right;
     
     @FXML
-    private ListView top_left;
+    private ListView song_list;
     
     @FXML
     private Label name_detail, artist_detail, year_detail, album_detail;
@@ -74,7 +74,7 @@ public class FXMLDocumentController implements Initializable {
         sortSongs();
         
         //Select first item as default
-        top_left.getSelectionModel().select(0);
+        song_list.getSelectionModel().select(0);
         selectSong();
     }
     
@@ -105,12 +105,12 @@ public class FXMLDocumentController implements Initializable {
         //Sort ObservableList
         FXCollections.sort(songs, compareSongByName);
         //Load songs into ListView
-        top_left.setItems(songs);
+        song_list.setItems(songs);
     }
     
     @FXML
     public void selectSong() {
-        selected_song = (Song)top_left.getSelectionModel().getSelectedItem();
+        selected_song = (Song)song_list.getSelectionModel().getSelectedItem();
         
         if (selected_song == null) {
             return;

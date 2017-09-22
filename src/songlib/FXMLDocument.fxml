@@ -36,6 +36,6 @@
          </children></Pane>
       <Pane fx:id="bot_left" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <Pane fx:id="bot_right" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ListView fx:id="top_left" maxHeight="1.7976931348623157E308" onMouseClicked="#selectSong" prefHeight="200.0" prefWidth="200.0" GridPane.valignment="BOTTOM" />
+      <ListView fx:id="song_list" maxHeight="1.7976931348623157E308" onMouseClicked="#selectSong" prefHeight="200.0" prefWidth="200.0" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
