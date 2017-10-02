@@ -18,8 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import java.util.ListIterator;
 import java.util.Optional;
@@ -31,17 +29,10 @@ import javafx.scene.control.ButtonType;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private GridPane background;
-
-    @FXML
-    private Pane top_right, bot_left, bot_right;
-
-    @FXML
     private ListView song_list;
 
     @FXML
-    private TextField name_detail, artist_detail, year_detail, album_detail, add_name_detail, add_artist_detail,
-            add_year_detail, add_album_detail;
+    private TextField name_detail, artist_detail, year_detail, album_detail, add_name_detail, add_artist_detail, add_year_detail, add_album_detail;
 
     @FXML
     private Button add_button, reset_button, delete_button, edit_button, save_button, cancel_button;
@@ -106,28 +97,30 @@ public class FXMLDocumentController implements Initializable {
     //Called by add_button - COMPLETE
     public void addSong() {
         //Get our input text
-        Song foo = new Song(add_name_detail.getText(), add_artist_detail.getText(), add_year_detail.getText(),
-                add_album_detail.getText());
+        Song foo = new Song(add_name_detail.getText(), add_artist_detail.getText(), add_year_detail.getText(), add_album_detail.getText());
 
         //Check if song or artist is blank - Check if duplicate
         if(add_name_detail.getText().trim().isEmpty() || add_artist_detail.getText().trim().isEmpty()) {
             error_label.setText("ERROR: MUST ENTER SONG/ARTIST");
             error_label.setTextFill(Color.RED);
-        }else if(songExists(foo)){
+        } else if(songExists(foo)) {
             error_label.setText("ERROR: DUPLICATE SONG");
             error_label.setTextFill(Color.RED);
-        }else{
+        } else {
             //Add our new song to ObservableList
             songs.add(foo);
+            
             //Sort and update list
             sortSongs();
             saveSongList();
+            
             //Set error status to green and reset fields
             edit_button.setDisable(false);
             delete_button.setDisable(false);
             error_label.setText("SUCCESS: SONG ADDED");
             error_label.setTextFill(Color.LIME);
             resetAdd();
+            
             //Set selection to new edited song
             song_list.getSelectionModel().select(foo);
             selectSong();
@@ -226,10 +219,10 @@ public class FXMLDocumentController implements Initializable {
         if(name_detail.getText().trim().isEmpty() || artist_detail.getText().trim().isEmpty()) {
             error_label.setText("ERROR: MUST ENTER SONG/ARTIST");
             error_label.setTextFill(Color.RED);
-        }else if(songExists(foo, song_list.getSelectionModel().getSelectedIndex())) {
+        } else if(songExists(foo, song_list.getSelectionModel().getSelectedIndex())) {
             error_label.setText("ERROR: DUPLICATE SONG");
             error_label.setTextFill(Color.RED);
-        }else{
+        } else {
             //Remove the selected song so that it can be replaced with edited version
             songs.remove(selected_song);
 
