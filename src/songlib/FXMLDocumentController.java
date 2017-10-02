@@ -64,14 +64,6 @@ public class FXMLDocumentController implements Initializable {
         return cp;
     };
 
-    //To actually add a song... must create as song object, test if already exists, then add or send error to UI
-//   Song test = new Song("Best I ever had", "Drake", "2005", "ALBUMMM");
-//   if (!songExists(test)) {
-//      addSong(test);
-//   } else {
-//      System.out.println("Song already exists");
-//   }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
